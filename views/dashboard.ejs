@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/styles/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-grid">
+        <!-- Rides & Ticket Purchase Section -->
+        <div class="rides-section">
+            <h1>Rides</h1>
+            <ul>
+                <% rides.forEach(ride => { %>
+                    <li>
+                        <%= ride.name %> - Fast-track Price: £<%= ride.fastTrackPrice %>
+                        <% if (ticketId) { %>
+                            <button onclick="addFastTrack('<%= ticketId %>', '<%= ride._id %>', '<%= ride.fastTrackPrice %>')">Add Fast Track</button>
+                        <% } else { %>
+                            <p>Please purchase a ticket to add fast-track options.</p>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+            <h2>Purchase Tickets</h2>
+            <label for="ticketDate">Choose a date:</label>
+            <input type="date" id="ticketDate" name="ticketDate" min="<%= new Date().toISOString().split('T')[0] %>" required>
+            <label for="tickets">Number of Tickets:</label>
+            <select id="tickets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button onclick="addTicketToCart()">Add Ticket to Cart</button>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart-section">
+            <h3>Cart</h3>
+            <ul id="cart-items"></ul>
+            <p id="cart-total-price">Total Price: £0.00</p>
+            <button onclick="checkout()">Checkout</button>
+        </div>
+
+        <!-- Tickets Section -->
+        <div class="tickets-section">
+            <h2>Your Tickets</h2>
+            <!-- Past and upcoming tickets will be dynamically populated here -->
+        </div>
+
+        <!-- Today's Ticket Section -->
+        <div class="today-ticket-section">
+            <h2>Today's Ticket</h2>
+            <!-- Today's tickets will be dynamically populated here -->
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background:white; margin:10% auto; padding:20px; width:50%;">
+            <h2>Confirm Your Order</h2>
+            <div id="orderDetails"></div>
+            <button onclick="finalizeCheckout()">Confirm Order</button>
+            <button onclick="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Logout Button -->
+    <button onclick="location.href='/logout'" class="logout-button">Logout</button>
+
+    <!-- Script to handle client-side logic -->
+    <script src="/scripts/dashboard.js"></script>
+</body>
+</html>
