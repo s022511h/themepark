@@ -14,7 +14,7 @@ const rideData = [
     name: "Spooks Ville",
     fastTrackPrice: 4,
     minHeight: 130,
-    imageUrl: "/images/spooksville.jpg" // Adjust with actual path or URL
+    imageUrl: "/images/spooksville.jpg"
   },
   {
     name: "Rapido Racer",
@@ -22,41 +22,18 @@ const rideData = [
     minHeight: 140,
     imageUrl: "/images/rapidoRacer.jpg"
   },
-  {
-    name: "Bees",
-    fastTrackPrice: 5.5,
-    minHeight: 140,
-    imageUrl: "path/to/bees.jpg"
-  },
-  {
-    name: "Tidal Run",
-    fastTrackPrice: 3,
-    minHeight: 120,
-    imageUrl: "path/to/tidalrun.jpg"
-  },
-  {
-    name: "Ride the Rapids",
-    fastTrackPrice: 1,
-    minHeight: 110,
-    imageUrl: "path/to/ridetherapids.jpg"
-  },
-  {
-    name: "The Teacups",
-    fastTrackPrice: 1,
-    minHeight: 90,
-    imageUrl: "path/to/theteacups.jpg"
-  }
+  // Correct the image URLs as necessary
 ];
 
 const insertRideData = async () => {
   try {
+    await Ride.deleteMany({});
     await Ride.insertMany(rideData);
     console.log('Rides inserted successfully!');
   } catch (error) {
     console.error('Error inserting rides:', error);
   }
 
-  // Close the database connection when done
   mongoose.connection.close();
 };
 

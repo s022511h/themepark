@@ -14,14 +14,18 @@
             <ul>
                 <% rides.forEach(ride => { %>
                     <li>
-                        <%= ride.name %> - Fast-track Price: £<%= ride.fastTrackPrice %>
-                        <% if (ticketId) { %>
-                            <button onclick="addFastTrack('<%= ticketId %>', '<%= ride._id %>', '<%= ride.fastTrackPrice %>')">Add Fast Track</button>
-                        <% } else { %>
-                            <p>Please purchase a ticket to add fast-track options.</p>
-                        <% } %>
+                        <img src="<%= ride.imageUrl %>" alt="Image of <%= ride.name %>" style="max-width: 60px; max-height: 60px;"> <!-- Adjust the styling as necessary -->
+                        <div>
+                            <strong><%= ride.name %></strong> - Fast-track Price: £<%= ride.fastTrackPrice %>
+                            <% if (ticketId) { %>
+                                <button onclick="addFastTrack('<%= ticketId %>', '<%= ride._id %>', '<%= ride.fastTrackPrice %>')">Add Fast Track</button>
+                            <% } else { %>
+                                <p>Please purchase a ticket to add fast-track options.</p>
+                            <% } %>
+                        </div>
                     </li>
                 <% }); %>
+                
             </ul>
             <h2>Purchase Tickets</h2>
             <label for="ticketDate">Choose a date:</label>
