@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const Ride = require('./models/Ride'); // Adjust the path to your Ride model as necessary
+const Ride = require('./models/Ride'); 
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -22,7 +22,30 @@ const rideData = [
     minHeight: 140,
     imageUrl: "/images/rapidoRacer.jpg"
   },
-  // Correct the image URLs as necessary
+  {
+    name: "Bees",
+    fastTrackPrice: 5.5,
+    minHeight: 140,
+    imageUrl: "path/to/bees.jpg"
+  },
+  {
+    name: "Tidal Run",
+    fastTrackPrice: 3,
+    minHeight: 120,
+    imageUrl: "path/to/tidalrun.jpg"
+  },
+  {
+    name: "Ride the Rapids",
+    fastTrackPrice: 1,
+    minHeight: 110,
+    imageUrl: "path/to/ridetherapids.jpg"
+  },
+  {
+    name: "The Teacups",
+    fastTrackPrice: 1,
+    minHeight: 90,
+    imageUrl: "path/to/theteacups.jpg"
+  }
 ];
 
 const insertRideData = async () => {

@@ -4,7 +4,6 @@ const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
-// Register User
 router.post('/register', async (req, res) => {
     const { email, password, confirm_password } = req.body;
 
@@ -25,7 +24,6 @@ router.post('/register', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Create a new user
         user = new User({
             email,
             password: hashedPassword
@@ -42,7 +40,6 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login User
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',

@@ -3,9 +3,9 @@ const router = express.Router();
 const Ticket = require('../models/Ticket');
 const Ride = require('../models/Ride');
 const Order = require('../models/Order');
-const authenticate = require('../middleware/authenticate');  // Ensure this middleware exists and works
+const authenticate = require('../middleware/authenticate'); 
 
-// Route to fetch all orders for an authenticated user
+//fetch all orders for user
 router.get('/orders', authenticate, async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.user._id });
@@ -16,7 +16,7 @@ router.get('/orders', authenticate, async (req, res) => {
     }
 });
 
-// Route to fetch tickets based on the provided date for an authenticated user
+// fetch tickets based on date for user
 router.get('/tickets', authenticate, async (req, res) => {
     const { date } = req.query;
     try {
@@ -41,11 +41,10 @@ router.put('/tickets/:ticketId/fast-track/:rideId', async (req, res) => {
         ticket.fastTrackRides.push(ride._id);
         await ticket.save();
 
-        // Include ride details in the response
         res.json({
             ticket,
-            rideName: ride.name,  // Make sure this matches your database field
-            fastTrackPrice: ride.fastTrackPrice  // Assuming the price is stored like this
+            rideName: ride.name, 
+            fastTrackPrice: ride.fastTrackPrice
         });
     } catch (error) {
         console.error('Server Error:', error);

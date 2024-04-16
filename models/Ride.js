@@ -11,12 +11,12 @@ const rideSchema = new mongoose.Schema({
   },
   minHeight: {
     type: Number,
-    required: true // Adjust as needed
+    required: true 
   },
   imageUrl: {
-    type: String // Adjust as needed
+    type: String 
   }
-  // You can include additional fields as needed
+ 
 });
 
 const Ride = mongoose.model('Ride', rideSchema);

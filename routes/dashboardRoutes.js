@@ -1,16 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Ride = require('../models/Ride');
-const Ticket = require('../models/Ticket'); // Ensure this is correctly imported
+const Ticket = require('../models/Ticket'); 
 
-// Assuming user session or authentication provides a user identifier
 router.get('/dashboard', async (req, res) => {
     try {
         const rides = await Ride.find();
-
-        // Simulate finding a ticket for the logged-in user (adapt as necessary)
-        const ticket = await Ticket.findOne(); // Simplified for demonstration
-        const ticketId = ticket ? ticket._id : null; // Use ._id, which is the MongoDB default
+        const ticket = await Ticket.findOne(); 
+        const ticketId = ticket ? ticket._id : null; 
 
         console.log("Rendering dashboard with ticketId:", ticketId);
 

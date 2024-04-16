@@ -1,4 +1,3 @@
-// models/Ticket.js
 const mongoose = require('mongoose');
 
 const ticketSchema = new mongoose.Schema({
@@ -8,7 +7,7 @@ const ticketSchema = new mongoose.Schema({
   },
   basePrice: {
     type: Number,
-    default: 20 // Default base price for a ticket
+    default: 20 // Default price for a ticket
   },
   fastTrackRides: [{
     type: mongoose.Schema.Types.ObjectId,

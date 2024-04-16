@@ -8,14 +8,12 @@
 </head>
 <body>
     <div class="dashboard-grid">
-        <!-- Rides & Ticket Purchase Section -->
         <div class="rides-section">
             <h1>Rides</h1>
             <ul>
                 <% rides.forEach(ride => { %>
                     <li>
-                        <img src="<%= ride.imageUrl %>" alt="Image of <%= ride.name %>" style="max-width: 60px; max-height: 60px;"> <!-- Adjust the styling as necessary -->
-                        <div>
+                        <img src="<%= ride.imageUrl %>" alt="Image of <%= ride.name %>" style="max-width: 100px; max-height: 100px;"> 
                             <strong><%= ride.name %></strong> - Fast-track Price: £<%= ride.fastTrackPrice %>
                             <% if (ticketId) { %>
                                 <button onclick="addFastTrack('<%= ticketId %>', '<%= ride._id %>', '<%= ride.fastTrackPrice %>')">Add Fast Track</button>
@@ -49,20 +47,15 @@
             <button onclick="checkout()">Checkout</button>
         </div>
 
-        <!-- Tickets Section -->
         <div class="tickets-section">
             <h2>Your Tickets</h2>
-            <!-- Past and upcoming tickets will be dynamically populated here -->
         </div>
 
-        <!-- Today's Ticket Section -->
         <div class="today-ticket-section">
             <h2>Today's Ticket</h2>
-            <!-- Today's tickets will be dynamically populated here -->
         </div>
     </div>
 
-    <!-- Confirmation Modal -->
     <div id="confirmationModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
         <div style="background:white; margin:10% auto; padding:20px; width:50%;">
             <h2>Confirm Your Order</h2>
@@ -72,10 +65,8 @@
         </div>
     </div>
 
-    <!-- Logout Button -->
     <button onclick="location.href='/logout'" class="logout-button">Logout</button>
 
-    <!-- Script to handle client-side logic -->
     <script src="/scripts/dashboard.js"></script>
 </body>
 </html>

@@ -13,10 +13,10 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 .then(() => console.log('Successfully connected to MongoDB.'))
 .catch(err => console.error('Connection error', err));
 
-// Passport Configuration
+// Passport Config
 require('./config/passportConfig')(passport);
 
-// Session setup
+// Setting up the session
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -110,7 +110,7 @@ app.get('/logout', (req, res) => {
             return next(err); 
         }
         req.flash('success_msg', 'You are logged out');
-        res.redirect('/login'); // Redirect to the login page after logging out
+        res.redirect('/login'); 
     });
 });
 
