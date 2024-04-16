@@ -26,25 +26,25 @@ const rideData = [
     name: "Bees",
     fastTrackPrice: 5.5,
     minHeight: 140,
-    imageUrl: "path/to/bees.jpg"
+    imageUrl: "/images/bees.jpg"
   },
   {
     name: "Tidal Run",
     fastTrackPrice: 3,
     minHeight: 120,
-    imageUrl: "path/to/tidalrun.jpg"
+    imageUrl: "/images/tidalrun.jpg"
   },
   {
     name: "Ride the Rapids",
     fastTrackPrice: 1,
     minHeight: 110,
-    imageUrl: "path/to/ridetherapids.jpg"
+    imageUrl: "/images/ridetherapids.jpg"
   },
   {
     name: "The Teacups",
     fastTrackPrice: 1,
     minHeight: 90,
-    imageUrl: "path/to/theteacups.jpg"
+    imageUrl: "/images/teacups.jpg"
   }
 ];
 
